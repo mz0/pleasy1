@@ -20,20 +20,19 @@ switch ( OperatingSystem.current() ) {
     default:
         swtArtifact += 'gtk.linux.x86_64'
 }
-def swtModId = "${swtGroupId}:${swtGrpPrefix}\${osgi.platform}"
-// println("module '$swtModId'")
-// module 'org.eclipse.platform:org.eclipse.swt.${osgi.platform}'
+def swtPlatformDependent = "${swtGroupId}:${swtGrpPrefix}" + '${osgi.platform}'
+def swtRealId = "${swtGroupId}:${swtArtifact}:${swtVersion}"
+
 configurations.configureEach {
     resolutionStrategy {
         dependencySubstitution {
-            substitute module(swtModId) with module("${swtGroupId}:${swtArtifact}:${swtVersion}")
+            substitute module(swtPlatformDependent) with module(swtRealId)
         }
     }
 }
 
 dependencies {
-    implementation "${swtGroupId}:${swtArtifact}:${swtVersion}"
-    implementation 'org.apache.commons:commons-text'
+    implementation swtRealId
     implementation project(':utilities')
 }
 
