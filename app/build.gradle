@@ -33,7 +33,7 @@ configurations.configureEach {
 
 dependencies {
     implementation swtRealId
-    implementation project(':utilities')
+    implementation project(':core')
 }
 
 application {
