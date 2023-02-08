@@ -34,8 +34,10 @@ configurations.configureEach {
 dependencies {
     implementation swtRealId
     implementation project(':core')
+    implementation project(':serviceA')
+    implementation project(':serviceB')
 }
 
 application {
-    mainClass = 'bb.app.App'
+    mainClass = 'bb.app.Main'
 }
