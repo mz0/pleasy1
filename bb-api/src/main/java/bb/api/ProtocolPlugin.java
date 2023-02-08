@@ -1,9 +1,11 @@
 package bb.api;
 
+import java.util.Set;
+
 public interface ProtocolPlugin {
     void init(String iniParam);
 
-    String getCompatibleID();
+    Set<String> getCompatibleIDs();
 
     IDatabaseCreator getDatabaseCreator();
 
