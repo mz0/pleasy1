@@ -14,9 +14,16 @@ adding ID 'dkw' for bb.spi.pb.ProtocolB
 WARNING: ID 'abc' for bb.spi.pb.ProtocolB conflicts with bb.spi.pa.ProtocolA
 adding ID 'mbb' for bb.spi.pb.ProtocolB
 adding ID 'bmw' for bb.spi.pb.ProtocolB
+bb.spi.pf.ProtocolF instantiated
+WARNING: ID 'dkw' for bb.spi.pf.ProtocolF conflicts with bb.spi.pb.ProtocolB
+WARNING: ID 'abc' for bb.spi.pf.ProtocolF conflicts with bb.spi.pa.ProtocolA
+WARNING: ID 'mbb' for bb.spi.pf.ProtocolF conflicts with bb.spi.pb.ProtocolB
+WARNING: ID 'bmw' for bb.spi.pf.ProtocolF conflicts with bb.spi.pb.ProtocolB
 
-2 plugins loaded OK (1 warning[s]) in 14 ms
+2 plugins loaded OK (5 warning[s]) in 20 ms
 
 Compatible IDs: dkw, agx, abc, apx, mbb, bmw
 Compatible IDs: dkw, agx, abc, apx, mbb, bmw
 ```
+Note 3 instantiations (ProtocolA, ProtocolB, ProtocolF), but only 2 of them are used ("loaded")  
+due to conflicts (all 4 IDs of ProtocolF conflict with ProtocolB)

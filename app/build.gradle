@@ -36,6 +36,7 @@ dependencies {
     implementation project(':core')
     implementation project(':serviceA')
     implementation project(':serviceB')
+    implementation project(':serviceF')
 }
 
 application {
