@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+//TODO https://github.com/google/auto/tree/main/service - found not working 2022-02-09
+//import com.google.auto.service.AutoService;
+//@AutoService(ProtocolPlugin.class)
 public class ProtocolA implements ProtocolPlugin {
     public ProtocolA() {
         System.out.println(ProtocolA.class.getName() + " instantiated");

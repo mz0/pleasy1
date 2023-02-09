@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     compileOnly project(':bb-api')
+ // compileOnly 'com.google.auto.service:auto-service:1.0.1' // found not working 2022-02-09
 }
