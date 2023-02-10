@@ -4,35 +4,8 @@ plugins {
     id 'bb.java-application-conventions'
 }
 
-// thanks github.com/calimero-project/calimero-gui/blob/master/build.gradle
-def swtGroupId = 'org.eclipse.platform'
-def swtVersion = '3.122.0'  // 2022-12-06 version 4.956 Build-Jdk-Spec: 17
-def swtGrpPrefix = 'org.eclipse.swt.'
-def swtArtifact = swtGrpPrefix
-
-switch ( OperatingSystem.current() ) {
-    case OperatingSystem.WINDOWS:
-        swtArtifact += 'win32.win32.x86_64'
-        break
-    case OperatingSystem.MAC_OS:
-        swtArtifact += 'cocoa.macosx.x86_64'
-        break
-    default:
-        swtArtifact += 'gtk.linux.x86_64'
-}
-def swtPlatformDependent = "${swtGroupId}:${swtGrpPrefix}" + '${osgi.platform}'
-def swtRealId = "${swtGroupId}:${swtArtifact}:${swtVersion}"
-
-configurations.configureEach {
-    resolutionStrategy {
-        dependencySubstitution {
-            substitute module(swtPlatformDependent) with module(swtRealId)
-        }
-    }
-}
 
 dependencies {
-    implementation swtRealId
     implementation project(':core')
     implementation project(':serviceA')
     implementation project(':serviceB')
