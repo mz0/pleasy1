@@ -4,6 +4,9 @@ plugins {
     id 'bb.java-application-conventions'
 }
 
+//configurations {
+//    customerA
+//}
 
 dependencies {
     implementation project(':core')
@@ -11,6 +14,11 @@ dependencies {
     implementation project(':serviceB')
     implementation project(':serviceF')
 }
+
+//task libs(type: Sync) {
+//  from configurations.customerA
+//  into "$buildDir/lib"
+//}
 
 application {
     mainClass = 'bb.app.Main'
