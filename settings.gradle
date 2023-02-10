@@ -8,3 +8,4 @@
 
 rootProject.name = 'mmod'
 include('app', 'bb-api', 'serviceA', 'serviceB', 'serviceF', 'core')
+include('web-ui')

@@ -6,6 +6,12 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 dependencies {
     constraints {
         implementation 'org.apache.commons:commons-text:1.9'
