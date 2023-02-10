@@ -17,7 +17,7 @@ WARNING: ID 'abc' for bb.spi.pb.ProtocolB conflicts with bb.spi.pa.ProtocolA
 adding ID 'mbb' for bb.spi.pb.ProtocolB
 adding ID 'bmw' for bb.spi.pb.ProtocolB
 
-2 plugins loaded OK (1 warning[s]) in 25 ms
+2 plugins loaded OK (1 warning[s]) in 35 ms
 
 
 Compatible IDs: dkw, agx, abc, apx, mbb, bmw

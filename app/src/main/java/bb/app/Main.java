@@ -1,40 +1,35 @@
-/* a starter using https://www.vogella.com/tutorials/SWT/article.html */
 package bb.app;
 
 import bb.core.PluginManager;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
+
+import javax.swing.*;
+import java.awt.FlowLayout;
+import java.lang.reflect.InvocationTargetException;
 
 public class Main {
-    public static void main(String[] args) {
-        PluginManager pm = new PluginManager();
-        String btnText = "Click here";
-        Display display = new Display();
-        try {
-          final Shell shell = new Shell(display);
-          shell.setText("SWT app0");
-          shell.setLayout(new FillLayout());
-          Button button = new Button(shell, SWT.PUSH);
-          button.setText(btnText);
-          button.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                System.out.println("Compatible IDs: " + getIDs(pm));
-            }
-          });
-          shell.open();
-          while (!shell.isDisposed())
-            if (!display.readAndDispatch()) {
-                display.sleep();
-            }
-        } finally {
-          display.dispose();
-        }
+    private static void createAndShowGUI() {
+        JFrame frm0 = new JFrame("HelloWorldSwing");
+        frm0.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JDialog dlg1 = new JDialog(frm0, "the owls are not what they seem", true);
+        dlg1.setLayout(new FlowLayout());
+        JButton btnOK = new JButton("OK");
+        btnOK.addActionListener(e -> onClick());
+        dlg1.add(new JLabel("click there >"));
+        dlg1.add(btnOK);
+        dlg1.setSize(310, 155);
+        dlg1.setVisible(true);
+     // frm0.pack(); // TODO check if needed
+     // frm0.setVisible(true);
+    }
+
+    private static void onClick() {
+        System.out.println("Compatible IDs: " + getIDs(PluginManager.getInstance()));
+    }
+
+    public static void main(String[] args) throws InterruptedException, InvocationTargetException {
+        PluginManager.init();
+        javax.swing.SwingUtilities.invokeAndWait(Main::createAndShowGUI);
+        System.exit(0);
     }
 
     private static String getIDs(PluginManager pm) {
