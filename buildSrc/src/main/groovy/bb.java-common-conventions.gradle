@@ -13,11 +13,13 @@ java {
 }
 
 dependencies {
+    def assertjVer = '3.24.2'
     constraints {
         implementation 'org.apache.commons:commons-text:1.9'
     }
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation("org.assertj:assertj-core:$assertjVer")
 }
 
 tasks.named('test') {

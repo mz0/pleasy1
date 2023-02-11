@@ -60,6 +60,11 @@ public class PluginManager {
         return protocolHandlers.keySet();
     }
 
+	public Map<String, String> getProtocolHandlerNames() {
+		return protocolHandlers.entrySet().stream()
+			.collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getClass().getName()));
+	}
+
     private static List<ProtocolPlugin> enabledPlugins(List<String> stopList) {
         System.out.println("will not load: " + String.join(", ", stopList));
         return ServiceLoader.load(ProtocolPlugin.class)

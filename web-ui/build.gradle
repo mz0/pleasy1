@@ -10,4 +10,8 @@ dependencies {
     implementation 'org.glassfish:javax.faces:2.3.9'
     implementation 'javax.servlet:jstl:1.2'
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation project(':core')
+    implementation project(':serviceA')
+    implementation project(':serviceB')
+    implementation project(':serviceF')
 }

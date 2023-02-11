@@ -24,6 +24,8 @@ public class Main {
 
     private static void onClick() {
         System.out.println("Compatible IDs: " + getIDs(PluginManager.getInstance()));
+        PluginManager.getInstance().getProtocolHandlerNames().entrySet()
+            .forEach(kv -> System.out.printf("ProtocolId %s - Handler %s%n", kv.getKey(), kv.getValue()));
     }
 
     public static void main(String[] args) throws InterruptedException, InvocationTargetException {
