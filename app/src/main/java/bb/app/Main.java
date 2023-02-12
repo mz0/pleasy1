@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Shell;
 
 public class Main {
     public static void main(String[] args) {
-        PluginManager pm = new PluginManager();
+        PluginManager.init();
         String btnText = "Click here";
         Display display = new Display();
         try {
@@ -24,7 +24,7 @@ public class Main {
           button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                System.out.println("Compatible IDs: " + getIDs(pm));
+                onClick();
             }
           });
           shell.open();
@@ -35,6 +35,12 @@ public class Main {
         } finally {
           display.dispose();
         }
+    }
+
+    private static void onClick() {
+        PluginManager pm = PluginManager.getInstance();
+        System.out.println("Compatible IDs: " + getIDs(pm));
+        pm.getProtocolHandlerNames().forEach((key, val) -> System.out.printf("ProtocolId %s - Handler %s%n", key, val));
     }
 
     private static String getIDs(PluginManager pm) {

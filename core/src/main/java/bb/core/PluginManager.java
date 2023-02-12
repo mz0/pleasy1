@@ -11,9 +11,29 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PluginManager {
+    private static volatile PluginManager INSTANCE;
     private final Map<String, ProtocolPlugin> protocolHandlers = new HashMap<>();
 
-    public PluginManager() {
+    public static PluginManager getInstance() {
+        if (INSTANCE == null) {
+            synchronized (PluginManager.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new PluginManager();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
+    public static void init() {
+        if (INSTANCE != null) {
+            System.out.printf("WARN %s is already initialized%n", PluginManager.class.getName());
+        } else {
+            getInstance();
+        }
+    }
+
+    private PluginManager() {
         List<String> stopList = List.of("bb.spi.pf.ProtocolF");
         long start = System.currentTimeMillis();
         List<ProtocolPlugin> loadPlugins = enabledPlugins(stopList);
@@ -39,6 +59,11 @@ public class PluginManager {
     public Set<String> getCompatibleIDs() {
         return protocolHandlers.keySet();
     }
+
+	public Map<String, String> getProtocolHandlerNames() {
+		return protocolHandlers.entrySet().stream()
+			.collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getClass().getName()));
+	}
 
     private static List<ProtocolPlugin> enabledPlugins(List<String> stopList) {
         System.out.println("will not load: " + String.join(", ", stopList));
