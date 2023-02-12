@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+ xmlns:f="http://java.sun.com/jsf/core"
  xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 <h:head>
@@ -10,9 +10,9 @@
 </h:head>
 <h:body>
 	<h2>Known Protocols:</h2>
-<c:forEach items="#{mrBean.map}" var="entry">
-    <li>protocolId: #{entry.key}, plugin: #{entry.value}</li>
-</c:forEach>
-
- </h:body>
+  <h:dataTable value="#{mrBean.list}" var="entry">
+    <h:column><f:facet name="header">protocolId</f:facet><h:outputText value="#{entry.key}"/></h:column>
+    <h:column><f:facet name="header">plugin</f:facet><h:outputText value="#{entry.value}"/></h:column>
+  </h:dataTable>
+</h:body>
 </html>

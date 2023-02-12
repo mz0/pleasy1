@@ -1,0 +1,50 @@
+  JSF <h:dataTable /> JavaDoc
+https://javaserverfaces.dev.java.net/nonav/docs/2.0/pdldocs/facelets/h/dataTable.html
+  JSF <h:column /> JavaDoc
+https://javaserverfaces.dev.java.net/nonav/docs/2.0/pdldocs/facelets/h/column.html
+  JSF <f:facet /> JavaDoc
+https://javaserverfaces.dev.java.net/nonav/docs/2.0/pdldocs/facelets/f/facet.html
+
+https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/f/tld-summary.html
+
+[JSF 2.2 View Declaration Language: Facelets Variant.](https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/index.html)
+---------------------------------------------------
+[All Tags / Functions](https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/alltags-frame.html)
+
+Tag Libraries
+============
+[Composite Components](https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/cc/tld-frame.html)
+[Faces Core]
+[Pass Through Attributes]
+[Pass Through Elements]
+[h]
+[JSTL core]
+[JSTL functions](https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/fn/tld-frame.html)
+[Facelets Templating]
+
+[Java EE 8 Schema Resources](http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/index.html)
+ This table contains the XML Schema components for Java EE 8 schema. All new schemas are in the http://xmlns.jcp.org/xml/ns/javaee/ namespace. Most older schemas remain in the http://java.sun.com/xml/ns/javaee/ namespace.
+
+Date Published 	File Name 	Description 	Status
+August 21, 2017 	application_8.xsd 	Application schema 	Final Release
+August 21, 2017 	application-client_8.xsd 	Application Client schema 	Final Release
+April 30, 2013 	batchXML_1_0.xsd 	Schema for batch.xml-based artifact loading in Java Batch 	Final Release
+August 21, 2017 	beans_2_0.xsd 	Contexts and Dependency Injection schema 	Final Release
+April 30, 2013 	connector_1_7.xsd 	Java EE Connector schema 	Final Release
+April 30, 2013 	ejb-jar_3_2.xsd 	Enterprise JavaBeans Deployment Descriptor Schema 	Final Release
+August 21, 2017 	javaee_8.xsd 	Java EE 8 definitions file that contains common schema components 	Final Release
+April 30, 2013 	javaee_web_services_1_4.xsd 	Web services schema 	Final Release
+April 30, 2013 	javaee_web_services_client_1_4.xsd 	Web services client schema 	Final Release
+April 30, 2013 	jobXML_1_0.xsd 	Batch Job Specification Language (JSL) schema 	Final Release
+April 30, 2013 	jsp_2_3.xsd 	JavaServer Pages Deployment Descriptor schema 	Final Release
+April 30, 2013 	permissions_7.xsd 	Java EE application permissions schema 	Final Release
+August 21, 2017 	web-app_4_0.xsd 	Web Application Deployment Descriptor schema 	Final Release
+August 21, 2017 	web-common_4_0.xsd 	Web Application Deployment Descriptor common definitions schema 	Final Release
+August 21, 2017 	web-fragment_4_0.xsd 	Web Application Deployment Descriptor fragment schema 	Final Release
+August 21, 2017 	web-facelettaglibrary_2_3.xsd 	JavaServer Faces Facelet Tag Library schema 	Final Release
+August 21, 2017 	web-facesconfig_2_3.xsd 	JavaServer Faces Application Configuration File schema 	Final Release
+August 21, 2017 	web-partialresponse_2_3.xsd 	JavaServer Faces partial response schema 	Final Release
+July 1, 2009 	web-facesuicomponent_2_0.xsd 	JavaServer Faces UI Component Configuration schema 	Final Release
+December 10, 2009 	web-jsptaglibrary_2_1.xsd 	JSP Taglibrary Deployment Descriptor schema 	Final Release
+November 21, 2007 	javaee_web_services_metadata_handler_2_0.xsd 	Web services schema 	Final Release
+- 	http://www.w3.org/2001/xml.xsd 	The Java EE schemas use some common definitions provided and published by W3C

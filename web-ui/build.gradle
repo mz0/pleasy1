@@ -1,10 +1,12 @@
+import org.akhikhl.gretty.GrettyPlugin
+
 buildscript {
   repositories {
     mavenCentral()
   }
 
   dependencies {
-    classpath 'org.gretty:gretty:3.1.1'
+    classpath 'org.gretty:gretty:3.1.1' // 4.x supports only Tomcat 10 and Jetty 11 (javax -> jakarta)
   }
 }
 
@@ -13,16 +15,20 @@ plugins {
 }
 
 
-project.apply(plugin: org.akhikhl.gretty.GrettyPlugin)
+project.apply(plugin: GrettyPlugin)
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.glassfish:javax.faces:2.3.9'
+    implementation 'org.glassfish:javax.faces:2.3.9' // 2.2.9 downgrade FAIL
+ // some parts in JSF need CDI see e.g. https://stackoverflow.com/a/18657532/228117
+ // in this case it was h:dataTable + f:facet
+    implementation 'javax.enterprise:cdi-api:1.2'
     implementation 'javax.servlet:jstl:1.2'
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
     implementation project(':core')
     implementation project(':serviceA')
     implementation project(':serviceB')
