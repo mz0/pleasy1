@@ -1,5 +1,9 @@
 deployment options:
-- "Smart Tomcat" plugin for IDEA
+- Using Gretty 3 plugin (and Jetty 10)
+```
+../gradlew appRunWar  # press Enter key to stop Jetty when done
+```
+- "Smart Tomcat" plugin for IDEA - TODO
 - manual build/copy
 ```
 ../gradlew build
@@ -34,3 +38,6 @@ adding ID 'apx' for bb.spi.pa.ProtocolA
 
 2 plugins loaded OK (1 warning[s]) in 7 ms
 ```
+
+see also:
+- [Gretty tasks](https://gretty-gradle-plugin.github.io/gretty-doc/Gretty-tasks.html)

@@ -1,6 +1,19 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'org.gretty:gretty:3.1.1'
+  }
+}
+
 plugins {
   id 'war'
 }
+
+
+project.apply(plugin: org.akhikhl.gretty.GrettyPlugin)
 
 repositories {
     mavenCentral()
@@ -14,4 +27,10 @@ dependencies {
     implementation project(':serviceA')
     implementation project(':serviceB')
     implementation project(':serviceF')
+}
+
+gretty {
+    servletContainer = 'jetty10'
+    jetty10Version = '10.0.13' // 2022-12-07
+    httpPort = 8080
 }
