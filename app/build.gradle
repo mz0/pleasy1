@@ -17,8 +17,11 @@ switch ( OperatingSystem.current() ) {
     default:
         swtArtifact += 'gtk.linux.x86_64'
 }
-
-def swtVersion = '3.122.0'  // 2022-12-06 version 4.956 Build-Jdk-Spec: 17
+// 3.117.0 - 2021-09-15 v4.946 Build-Jdk-Spec: 11 (class file version 55.0)
+// 3.120.0 - 2022-06-14 v4.952 Build-Jdk-Spec: 11 (class file version 55.0)
+// '3.122.0'  // 2022-12-06 v4.956 Build-Jdk-Spec: 17 (class file version 55.0)
+def swtVersion =  '3.116.100'  // 2021-06-14 v4.944 Build-Jdk-Spec: 11 (class file version 52.0)
+// the 1st version of org.eclipse.swt.cocoa.macosx.aarch64
 def swtGAV = "${swtGroup}:${swtArtifact}:${swtVersion}"
 
 dependencies {

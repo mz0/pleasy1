@@ -2,11 +2,11 @@ package bb.core;
 
 import bb.api.ProtocolPlugin;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
-import java.util.ServiceLoader.Provider; // since Java 9
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -34,12 +34,17 @@ public class PluginManager {
     }
 
     private PluginManager() {
-        List<String> stopList = List.of("bb.spi.pf.ProtocolF");
+        List<String> stopList = Arrays.asList("bb.spi.pf.ProtocolF");
+        System.out.println("will not load: " + String.join(", ", stopList));
         long start = System.currentTimeMillis();
-        List<ProtocolPlugin> loadPlugins = enabledPlugins(stopList);
+        ServiceLoader<ProtocolPlugin> loader = ServiceLoader.load(ProtocolPlugin.class);
         int warnings = 0;
         System.out.println("collecting supported protocol IDs");
-        for (ProtocolPlugin pp : loadPlugins) {
+        for (ProtocolPlugin pp : loader) {
+            if (stopList.contains(pp.getClass().getName())) {
+                System.out.printf("not loading %s%n", pp.getClass().getName());
+                continue;
+            }
             for (String id : pp.getCompatibleIDs()) {
                 if (protocolHandlers.get(id) == null) {
                     System.out.printf("adding ID '%s' for %s%n", id, pp.getClass().getName());
@@ -53,7 +58,7 @@ public class PluginManager {
         }
         long finish = System.currentTimeMillis();
         System.out.printf("%n%d plugins loaded OK (%d warning[s]) in %d ms%n%n%n",
-                loadPlugins.size(), warnings, finish - start);
+                protocolHandlers.values().stream().distinct().count(), warnings, finish - start);
     }
 
     public Set<String> getCompatibleIDs() {
@@ -64,13 +69,4 @@ public class PluginManager {
 		return protocolHandlers.entrySet().stream()
 			.collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getClass().getName()));
 	}
-
-    private static List<ProtocolPlugin> enabledPlugins(List<String> stopList) {
-        System.out.println("will not load: " + String.join(", ", stopList));
-        return ServiceLoader.load(ProtocolPlugin.class)
-                .stream()
-                .filter((Provider<ProtocolPlugin> p) -> !stopList.contains(p.type().getName()))
-                .map(Provider::get)
-                .collect(Collectors.toList());
-    }
 }
