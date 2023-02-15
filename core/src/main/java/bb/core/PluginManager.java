@@ -34,7 +34,7 @@ public class PluginManager {
     }
 
     private PluginManager() {
-        List<String> stopList = List.of("bb.spi.pf.ProtocolF");
+        List<String> stopList = List.of(); // List.of("bb.spi.pf.ProtocolF"); TODO load stopList from file
         long start = System.currentTimeMillis();
         List<ProtocolPlugin> loadPlugins = enabledPlugins(stopList);
         int warnings = 0;
@@ -66,7 +66,7 @@ public class PluginManager {
 	}
 
     private static List<ProtocolPlugin> enabledPlugins(List<String> stopList) {
-        System.out.println("will not load: " + String.join(", ", stopList));
+        if (!stopList.isEmpty()) { System.out.println("will not load: " + String.join(", ", stopList)); }
         return ServiceLoader.load(ProtocolPlugin.class)
                 .stream()
                 .filter((Provider<ProtocolPlugin> p) -> !stopList.contains(p.type().getName()))

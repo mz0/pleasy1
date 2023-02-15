@@ -1,25 +1,14 @@
-import org.akhikhl.gretty.GrettyPlugin
-
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath 'org.gretty:gretty:3.1.1' // 4.x supports only Tomcat 10 and Jetty 11 (javax -> jakarta)
-  }
-}
-
 plugins {
   id 'war'
+  id "org.gretty" version "3.1.1"   // 4.x supports only Tomcat 10 and Jetty 11 (javax -> jakarta)
 }
-
-
-project.apply(plugin: GrettyPlugin)
 
 repositories {
     mavenCentral()
 }
+
+ext.flavor = project.hasProperty('flavor') ? project.flavor : 'ABF'
+println "building ${flavor} flavor"
 
 dependencies {
     implementation 'org.glassfish:javax.faces:2.3.9' // 2.2.9 downgrade FAIL
@@ -30,9 +19,23 @@ dependencies {
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 
     implementation project(':core')
-    implementation project(':serviceA')
-    implementation project(':serviceB')
-    implementation project(':serviceF')
+}
+switch (flavor) {
+    case "AB": dependencies {
+          implementation project(':serviceA')
+          implementation project(':serviceB')
+        }
+        break
+    case "AF": dependencies {
+          implementation project(':serviceA')
+          implementation project(':serviceF')
+        }
+        break
+    default: dependencies {
+          implementation project(':serviceA')
+          implementation project(':serviceB')
+          implementation project(':serviceF')
+        }
 }
 
 gretty {
